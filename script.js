@@ -1,27 +1,29 @@
 const container = document.querySelector("#container");
+let question = 16;
+const changeGridBtn = document.querySelector("#change-grid");
 createDivGrid();
 const gridItems = document.querySelectorAll(".grid-item");
 
-// gridItems.forEach(gridItem => {
-//    addEventListener("mouseover", (e) => {
-//     highlight(gridItem)
-//     console.log(e.target)
-// });
-// });
 
-for (let i = 0; i < gridItems.length; i++) {
-   gridItems[i].addEventListener("mouseover", () => highlight(gridItems[i]));
-}
+changeGridBtn.addEventListener("click", () => {
+    question = prompt("Enter new grid")
+
+    createDivGrid()
+})
 
 // function that creates a loop that runs 256 times at the beginning
-// of the program and creates 16x16 grid of divs
+// of the program and creates a grid based on the user input of divs
 function createDivGrid() {
-   for (let i = 0; i < 16 * 16; i++) {
+    container.textContent = ''
+   for (let i = 0; i < (question * question); i++) {
       let div = document.createElement("div");
       div.classList.add("grid-item");
+      div.addEventListener('mouseover', () => highlight(div))
+      div.style.flexBasis = `${100/question}%`;
       container.appendChild(div);
    }
 }
+
 
 // function that adds the highlight class to griditems so they
 // get background color black in the css
