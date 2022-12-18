@@ -7,12 +7,19 @@ let sliderValue = slider.value;
 createDivGrid();
 const gridItems = document.querySelectorAll(".grid-item");
 
+const clearCanvas = document.querySelector("#clear-canvas");
+
+// Listens to clicks on the clearCanvas buttons and clears
+// the canvas by calling the creatDivGrid() function
+clearCanvas.addEventListener('click', () => {
+   createDivGrid()
+})
 
 // the event listener detects any input on the slider, sets the slider
 // Value to that new input, displays the value of the sliderValue in the html
 // and calls the createDivGrid() function.
 slider.addEventListener("input", () => {
-   sliderValue = slider.value
+   sliderValue = slider.value;
    valueContainer.textContent = `${slider.value}x${slider.value}`;
    createDivGrid();
 });
