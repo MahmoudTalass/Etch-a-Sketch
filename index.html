@@ -9,12 +9,18 @@
    </head>
    <body>
       <h1>Etch-a-Sketch</h1>
-      
+
       <div id="grid-container"></div>
-      <div class="slider-container">
-         <div id="value-container">16x16</div>
-         <input type="range" min="1" max="100" value="16" id="slider" />
+      <div class="tools-container">
+         <div class="slider-container">
+            <div id="value-container">16x16</div>
+            <input type="range" min="1" max="100" value="16" id="slider" />
+         </div>
+         <div class="clear-canvas-div">
+            <button id="clear-canvas">Clear</button>
+         </div>
       </div>
+
       <script src="script.js"></script>
    </body>
 </html>
