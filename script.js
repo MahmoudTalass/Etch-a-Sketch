@@ -1,4 +1,5 @@
-const container = document.querySelector("#container");
+const gridContainer = document.querySelector("#grid-container");
+
 const slider = document.querySelector("#slider");
 const valueContainer = document.querySelector("#value-container");
 let sliderValue = slider.value;
@@ -6,22 +7,26 @@ let sliderValue = slider.value;
 createDivGrid();
 const gridItems = document.querySelectorAll(".grid-item");
 
+
+// the event listener detects any input on the slider, sets the slider
+// Value to that new input, displays the value of the sliderValue in the html
+// and calls the createDivGrid() function.
 slider.addEventListener("input", () => {
    sliderValue = slider.value
-   valueContainer.textContent = sliderValue;
+   valueContainer.textContent = `${slider.value}x${slider.value}`;
    createDivGrid();
 });
 
-// function that creates a loop that runs 256 times at the beginning
+// function that creates a loop that runs (input*input) times at the beginning
 // of the program and creates a grid based on the user input of divs
 function createDivGrid() {
-   container.textContent = "";
+   gridContainer.textContent = "";
    for (let i = 0; i < sliderValue * sliderValue; i++) {
       let div = document.createElement("div");
       div.classList.add("grid-item");
-      div.addEventListener("mouseover", () => highlight(div));
+      div.addEventListener("mouseenter", () => highlight(div));
       div.style.flexBasis = `${100 / sliderValue}%`;
-      container.appendChild(div);
+      gridContainer.appendChild(div);
    }
 }
 
