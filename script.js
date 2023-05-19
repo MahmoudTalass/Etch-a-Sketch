@@ -31,12 +31,37 @@ function createDivGrid() {
    for (let i = 0; i < sliderValue * sliderValue; i++) {
       let div = document.createElement("div");
       div.classList.add("grid-item");
-      div.addEventListener("mouseenter", () => highlight(div));
       div.style.flexBasis = `${100 / sliderValue}%`;
       gridContainer.appendChild(div);
    }
 }
 
+// this variable keeps track when the left click button
+// on the mouse is down
+let isMouseDown = false;
+
+// this event listner changes the state of the isMouseDown
+// variable to down when the mouse button is up
+gridContainer.addEventListener('mouseup', () => {
+   isMouseDown = false;
+})
+
+// this event listner changes the state of the isMouseDown
+// variable to down when the mouse button is down
+gridContainer.addEventListener("mousedown", () => {
+   isMouseDown = true;
+});
+
+// this event listener checks if isMouseDown is true and 
+// if it is, it creates a variable that holds the event's target
+// which is the div that the mouse is on, and changes its color
+gridContainer.addEventListener("mousemove", (e) => {
+   if (isMouseDown) {
+      const target = e.target;
+      highlight(e.target)
+   }   
+});
+console.log(gridContainer);
 // function that adds the highlight class to griditems so they
 // get background color black in the css
 function highlight(item) {
