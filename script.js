@@ -9,15 +9,19 @@ const gridItems = document.querySelectorAll(".grid-item");
 
 const clearCanvas = document.querySelector("#clear-canvas");
 
-// Listens to clicks on the clearCanvas buttons and clears
-// the canvas by calling the creatDivGrid() function
+/* 
+Listens to clicks on the clearCanvas buttons and clears
+the canvas by calling the creatDivGrid() function
+*/
 clearCanvas.addEventListener('click', () => {
    createDivGrid()
 })
 
-// the event listener detects any input on the slider, sets the slider
-// Value to that new input, displays the value of the sliderValue in the html
-// and calls the createDivGrid() function.
+/*
+the event listener detects any input on the slider, sets the slider
+Value to that new input, displays the value of the sliderValue in the html
+and calls the createDivGrid() function.
+*/
 slider.addEventListener("input", () => {
    sliderValue = slider.value;
    valueContainer.textContent = `${slider.value}x${slider.value}`;
@@ -36,25 +40,33 @@ function createDivGrid() {
    }
 }
 
-// this variable keeps track when the left click button
-// on the mouse is down
+/*
+this variable keeps track when the left click button
+on the mouse is down
+*/
 let isMouseDown = false;
 
-// this event listner changes the state of the isMouseDown
-// variable to down when the mouse button is up
+/* 
+this event listner changes the state of the isMouseDown
+variable to down when the mouse button is up
+*/ 
 gridContainer.addEventListener('mouseup', () => {
    isMouseDown = false;
 })
 
-// this event listner changes the state of the isMouseDown
-// variable to down when the mouse button is down
+/* 
+this event listner changes the state of the isMouseDown
+variable to down when the mouse button is down
+*/
 gridContainer.addEventListener("mousedown", () => {
    isMouseDown = true;
 });
 
-// this event listener checks if isMouseDown is true and 
-// if it is, it creates a variable that holds the event's target
-// which is the div that the mouse is on, and changes its color
+/*
+this event listener checks if isMouseDown is true and 
+if it is, it creates a variable that holds the event's target
+which is the div that the mouse is on, and changes its color
+*/
 gridContainer.addEventListener("mousemove", (e) => {
    if (isMouseDown) {
       const target = e.target;
@@ -62,8 +74,10 @@ gridContainer.addEventListener("mousemove", (e) => {
    }   
 });
 console.log(gridContainer);
-// function that adds the highlight class to griditems so they
-// get background color black in the css
+/*
+function that adds the highlight class to griditems so they
+get background color black in the css
+*/
 function highlight(item) {
    item.classList.add("highlight");
 }
